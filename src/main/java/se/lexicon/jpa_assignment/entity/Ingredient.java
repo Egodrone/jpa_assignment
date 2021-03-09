@@ -16,9 +16,13 @@ public class Ingredient {
 
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "recipe_ingredient_id")
+    @JoinColumn(name = "recipe_ingredient_recipe_ingredient_id")
     private RecipeIngredient recipeIngredient;
 
+    //create collection here
+    // @ManyToOne(fetch = FetchType.EAGER,
+    //        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    //@JoinColumn(name = "recipe_ingredient_id")
 
     public Ingredient() {
     }

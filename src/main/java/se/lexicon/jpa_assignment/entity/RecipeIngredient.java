@@ -20,7 +20,11 @@ public class RecipeIngredient {
 
 
     //b. Contains a reference to Ingredient. (Id reference to ingredient above???)
-    @OneToMany(mappedBy = "ingredient_ingredient_id")
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            mappedBy = "recipeIngredient",
+            orphanRemoval = true)
+    @JoinColumn(name="ingredient_ingredien_id")
     private Ingredient ingredient;
 
     private double amount;
@@ -37,6 +41,14 @@ public class RecipeIngredient {
     }
 
     public RecipeIngredient(UUID recipeIngredientId, Ingredient ingredient, double amount, Measurement measurement, Recipe recipe) {
+        this.recipeIngredientId = recipeIngredientId;
+        this.ingredient = ingredient;
+        this.amount = amount;
+        this.measurement = measurement;
+        this.recipe = recipe;
+    }
+
+    public RecipeIngredient(Ingredient ingredient, double amount, Measurement measurement, Recipe recipe) {
         this.recipeIngredientId = recipeIngredientId;
         this.ingredient = ingredient;
         this.amount = amount;
