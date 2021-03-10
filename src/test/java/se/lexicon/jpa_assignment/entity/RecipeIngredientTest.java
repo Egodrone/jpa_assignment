@@ -24,7 +24,16 @@ public class RecipeIngredientTest {
         System.out.println(Measurement.DL.getMeasurementCode());
         Assertions.assertEquals(10.4, testObject.getAmount());
         Assertions.assertEquals(Measurement.DL, testObject.getMeasurement());
-        Assertions.assertEquals("Ingredient{ingredientId=1, ingredientName='Sugar', recipeIngredient=null}", testObject.getIngredient().toString());
+        Assertions.assertEquals("Ingredient{ingredientId=1, ingredientName='Sugar'}", testObject.getIngredient().toString());
+    }
+
+    @Test
+    @DisplayName("Test Hashcode")
+    public void test_hash_code() {
+        RecipeIngredient expected = new RecipeIngredient(
+                new Ingredient(1, "Sugar"),
+                10.4, Measurement.DL, new Recipe());
+        Assertions.assertEquals(expected.hashCode(), testObject.hashCode());
     }
 
 

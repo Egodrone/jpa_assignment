@@ -4,7 +4,6 @@ package se.lexicon.jpa_assignment.entity;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.UUID;
 
 
 @Entity
@@ -16,7 +15,7 @@ public class RecipeIngredient {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(updatable = false, nullable = false)
-    private UUID recipeIngredientId;//change to string String
+    private String recipeIngredientId;//change to string String
 
 
     @ManyToOne(fetch = FetchType.EAGER,
@@ -38,7 +37,7 @@ public class RecipeIngredient {
     public RecipeIngredient() {
     }
 
-    public RecipeIngredient(UUID recipeIngredientId, Ingredient ingredient, double amount, Measurement measurement, Recipe recipe) {
+    public RecipeIngredient(String recipeIngredientId, Ingredient ingredient, double amount, Measurement measurement, Recipe recipe) {
         this.recipeIngredientId = recipeIngredientId;
         this.ingredient = ingredient;
         this.amount = amount;
@@ -54,11 +53,11 @@ public class RecipeIngredient {
         this.recipe = recipe;
     }
 
-    public UUID getRecipeIngredientId() {
+    public String getRecipeIngredientId() {
         return recipeIngredientId;
     }
 
-    public void setRecipeIngredientId(UUID recipeIngredientId) {
+    public void setRecipeIngredientId(String recipeIngredientId) {
         this.recipeIngredientId = recipeIngredientId;
     }
 
