@@ -22,7 +22,6 @@ public class Recipe {
     )
     private List<RecipeIngredient> recipeIngredients;
 
-    //one to one
     @OneToOne(mappedBy = "recipe",
             cascade = {
                     CascadeType.PERSIST,
@@ -33,7 +32,7 @@ public class Recipe {
     //@JoinColumn(name = "recipe_ingredient_recipe_ingredient_id")
     private RecipeInstruction instruction;
 
-    //many to many
+
     @ManyToMany()
     @JoinTable(name = "recipe_test",
             joinColumns = @JoinColumn(name = "recipe_category_category_id"),
