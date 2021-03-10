@@ -13,11 +13,6 @@ public class Ingredient {
 
     @Column(nullable = false, length = 50, unique = true)
     private String ingredientName;
-    //not nesseesary, uni directional
-    @ManyToOne(fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "recipe_ingredient_recipe_ingredient_id")
-    private RecipeIngredient recipeIngredient;
 
 
     public Ingredient() {
@@ -44,25 +39,18 @@ public class Ingredient {
         this.ingredientName = ingredientName;
     }
 
-    public RecipeIngredient getRecipeIngredient() {
-        return recipeIngredient;
-    }
-
-    public void setRecipeIngredient(RecipeIngredient recipeIngredient) {
-        this.recipeIngredient = recipeIngredient;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ingredient that = (Ingredient) o;
-        return ingredientId == that.ingredientId && Objects.equals(ingredientName, that.ingredientName) && Objects.equals(recipeIngredient, that.recipeIngredient);
+        return ingredientId == that.ingredientId && Objects.equals(ingredientName, that.ingredientName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ingredientId, ingredientName, recipeIngredient);
+        return Objects.hash(ingredientId, ingredientName);
     }
 
     @Override
@@ -70,7 +58,6 @@ public class Ingredient {
         return "Ingredient{" +
                 "ingredientId=" + ingredientId +
                 ", ingredientName='" + ingredientName + '\'' +
-                ", recipeIngredient=" + recipeIngredient +
                 '}';
     }
 
