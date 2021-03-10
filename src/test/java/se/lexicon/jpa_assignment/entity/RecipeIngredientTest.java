@@ -21,6 +21,7 @@ public class RecipeIngredientTest {
     @Test
     @DisplayName("Test of the created object")
     public void test_created_object() {
+        System.out.println(Measurement.DL.getMeasurementCode());
         Assertions.assertEquals(10.4, testObject.getAmount());
         Assertions.assertEquals(Measurement.DL, testObject.getMeasurement());
         Assertions.assertEquals("Ingredient{ingredientId=1, ingredientName='Sugar', recipeIngredient=null}", testObject.getIngredient().toString());

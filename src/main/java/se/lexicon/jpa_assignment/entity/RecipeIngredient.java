@@ -15,17 +15,19 @@ public class RecipeIngredient {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
+    //name here, same as UUID or it is not important
     @Column(name = "recipeIngredientId", updatable = false, nullable = false)
     private UUID recipeIngredientId;
 
 
     //b. Contains a reference to Ingredient. (Id reference to ingredient above???)
-    @OneToMany(fetch = FetchType.EAGER,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            mappedBy = "recipeIngredient",
-            orphanRemoval = true)
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+            )
     @JoinColumn(name="ingredient_ingredien_id")
     private Ingredient ingredient;
+    //private List<Ingredient> ingredientList;
+    //think changing to Collection here but in the assignment it says Ingredient
 
     private double amount;
 
@@ -33,7 +35,7 @@ public class RecipeIngredient {
 
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "recipe_id")
+    @JoinColumn(name = "recipe_recipe_id")
     private Recipe recipe;
 
 

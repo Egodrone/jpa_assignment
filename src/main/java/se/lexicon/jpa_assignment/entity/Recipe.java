@@ -17,18 +17,27 @@ public class Recipe {
 
     @OneToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            mappedBy = "productOrder",
+            mappedBy = "ingredient",
             orphanRemoval = true
     )
     private List<RecipeIngredient> recipeIngredients;
 
     //one to one
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "recipe_ingredient_recipe_ingredient_id")
+    @OneToOne(mappedBy = "recipe",
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE,
+                    CascadeType.REFRESH,
+                    CascadeType.DETACH
+            })
+    //@JoinColumn(name = "recipe_ingredient_recipe_ingredient_id")
     private RecipeInstruction instruction;
 
     //many to many
-    @ManyToMany
+    @ManyToMany()
+    @JoinTable(name = "recipe_test",
+            joinColumns = @JoinColumn(name = "recipe_category_category_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id"))
     private List<RecipeCategory> categories;
 
 
