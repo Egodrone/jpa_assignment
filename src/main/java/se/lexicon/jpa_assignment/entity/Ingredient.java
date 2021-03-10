@@ -13,26 +13,12 @@ public class Ingredient {
 
     @Column(nullable = false, length = 50, unique = true)
     private String ingredientName;
-
-    // Not sure if this part should be implemented
+    //not nesseesary, uni directional
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "recipe_ingredient_recipe_ingredient_id")
     private RecipeIngredient recipeIngredient;
 
-    /*
-                cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE,
-                    CascadeType.REFRESH,
-                    CascadeType.DETACH
-            }
-     */
-
-    //create collection here
-    // @ManyToOne(fetch = FetchType.EAGER,
-    //        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    //@JoinColumn(name = "recipe_ingredient_id")
 
     public Ingredient() {
     }

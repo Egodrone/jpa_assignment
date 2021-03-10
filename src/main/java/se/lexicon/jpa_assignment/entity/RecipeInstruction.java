@@ -21,6 +21,7 @@ public class RecipeInstruction {
     @Column(nullable = false, length = 250)
     private String instructions;
 
+    //not necessary
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "recipe_recipe_id")
     private Recipe recipe;

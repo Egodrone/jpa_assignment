@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import se.lexicon.jpa_assignment.entity.Ingredient;
+
+import java.util.List;
 import java.util.Optional;
 
 
@@ -46,5 +48,15 @@ public class IngredientRepositoryTest {
         Assertions.assertEquals(name, findIngredient.get().getIngredientName());
     }
 
+
+    @Test
+    @DisplayName("Test find all ingredients")
+    public void test_find_all() {
+        ingredient = new Ingredient(2, "Salt");
+        testObject.save(ingredient);
+
+        List<Ingredient> allIngredients = testObject.findAll();
+        Assertions.assertEquals(2, allIngredients.size());
+    }
 
 }
