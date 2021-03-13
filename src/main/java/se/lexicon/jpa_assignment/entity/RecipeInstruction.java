@@ -30,6 +30,10 @@ public class RecipeInstruction {
     public RecipeInstruction() {
     }
 
+    public RecipeInstruction(String instructions) {
+        this.instructions = instructions;
+    }
+
     public RecipeInstruction(UUID instructionsId, String instructions) {
         this.instructionsId = instructionsId;
         this.instructions = instructions;

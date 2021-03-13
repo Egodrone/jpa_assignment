@@ -27,6 +27,7 @@ public class RecipeIngredientTest {
         Assertions.assertEquals("Ingredient{ingredientId=1, ingredientName='Sugar'}", testObject.getIngredient().toString());
     }
 
+
     @Test
     @DisplayName("Test Hashcode")
     public void test_hash_code() {
