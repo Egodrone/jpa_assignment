@@ -4,7 +4,6 @@ package se.lexicon.jpa_assignment.entity;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.UUID;
 
 
 @Entity
@@ -16,12 +15,11 @@ public class RecipeInstruction {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(name = "instructionsId", updatable = false, nullable = false)
-    private UUID instructionsId;
+    private String instructionsId;
 
     @Column(nullable = false, length = 250)
     private String instructions;
 
-    //not necessary
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "recipe_recipe_id")
     private Recipe recipe;
@@ -34,16 +32,16 @@ public class RecipeInstruction {
         this.instructions = instructions;
     }
 
-    public RecipeInstruction(UUID instructionsId, String instructions) {
+    public RecipeInstruction(String instructionsId, String instructions) {
         this.instructionsId = instructionsId;
         this.instructions = instructions;
     }
 
-    public UUID getInstructionsId() {
+    public String getInstructionsId() {
         return instructionsId;
     }
 
-    public void setInstructionsId(UUID instructionsId) {
+    public void setInstructionsId(String instructionsId) {
         this.instructionsId = instructionsId;
     }
 

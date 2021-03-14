@@ -15,7 +15,7 @@ public class RecipeIngredient {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(updatable = false, nullable = false)
-    private String recipeIngredientId;//change to string String
+    private String recipeIngredientId;
 
 
     @ManyToOne(fetch = FetchType.EAGER,
