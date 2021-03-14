@@ -59,7 +59,7 @@ public class RecipeRepositoryTest {
 
 
     @Test
-    @DisplayName("Test hachcode")
+    @DisplayName("Test hashcode")
     public void test_hashcode() {
         List<Recipe> recipeList = testObject.findAll();
         Recipe expected = new Recipe(1, "Meat Recipe");
