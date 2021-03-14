@@ -41,7 +41,6 @@ public class IngredientRepositoryTest {
     @Test
     @DisplayName("Test find by name")
     public void test_find_by_name() {
-        System.out.println("-------------------------------");
         String name = "Tomato";
         Optional<Ingredient> findIngredient = testObject.findByIngredientName(name);
         Assertions.assertEquals(1, findIngredient.get().getIngredientId());
@@ -58,5 +57,6 @@ public class IngredientRepositoryTest {
         List<Ingredient> allIngredients = testObject.findAll();
         Assertions.assertEquals(2, allIngredients.size());
     }
+
 
 }

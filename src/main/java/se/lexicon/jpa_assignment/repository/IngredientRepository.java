@@ -10,6 +10,10 @@ import java.util.Optional;
 
 public interface IngredientRepository extends CrudRepository<Ingredient, Integer> {
 
+    //save
+
+    //@Override
+    //<S extends Ingredient> S save(S s);
 
     //findByIngredientId
     Optional<Ingredient> findById(int id);
