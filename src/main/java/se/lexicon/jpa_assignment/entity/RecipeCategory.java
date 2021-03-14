@@ -19,6 +19,8 @@ public class RecipeCategory {
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             mappedBy = "recipeName",
             orphanRemoval = true)
+
+    @Column(nullable = false, length = 50)
     private List<Recipe> recipes;
 
     public RecipeCategory() {
